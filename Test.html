@@ -30,7 +30,7 @@
       f = t / 8;
       c = Math.cos(f);
       s = Math.sin(f);
-      view.set('quaternion', [0, 0, 0, 0]);
+      view.set('quaternion', [s, 0, 0, 0]);
       t = Math.max(clock - 4, 0) / 2
       t = t < .5 ? t * t : t - .25
       f = t / 3.71;
