@@ -17,13 +17,16 @@
       },
     });
     var three = mathbox.three;
+
     three.camera.position.set(5.5, .5, -2.3);
     three.renderer.setClearColor(new THREE.Color(0x000000), 1.0);
+
     var objs = null
     var time = 0
     three.on('update', function () {
       clock = three.Time.frames / 60
       time = clock
+
       t = Math.max(clock, 0) / 2
       t = t < .5 ? t * t : t - .25
   
@@ -31,14 +34,18 @@
       c = Math.cos(f);
       s = Math.sin(f);
       view.set('quaternion', [0, -s, 0, c]);
+
       t = Math.max(clock - 4, 0) / 2
       t = t < .5 ? t * t : t - .25
+
       f = t / 3.71;
       c = Math.cos(f);
       s = Math.sin(f);
+
       if (objs)
         objs.set('quaternion', [-s, 0, 0, c]);
     });
+
     view = mathbox
       .unit({
         scale: 720,
@@ -48,6 +55,7 @@
         range: [[-π, π], [0, 1], [-1, 1]],
         scale: [2, 2, 2],
       });
+
     view
     .transform({
       position: [0, .5, 0],
@@ -64,6 +72,7 @@
       color: 0x00F0B0,
       opacity: .2,
     })
+
     view
     .transform({
       position: [0, .5, 0],
@@ -80,6 +89,7 @@
       color: 0x00F0B0,
       opacity: .2,
     })
+
     view
     .transform({
       position: [0, 1, 0],
@@ -96,6 +106,7 @@
       color: 0x00F0B0,
       opacity: .36,
     })
+
     view.interval({
       centered: true,
       axis: 'z',
@@ -124,6 +135,7 @@
       order: "xzyw",
       id: 'strips',
     });
+
     view
     .transform({
       classes: ['surface'],
@@ -138,6 +150,7 @@
         fill:  false,
         lineY: true,
       });
+
     view
     .transform({
       classes: ['surface'],
@@ -161,7 +174,9 @@
         colors: '<',
         shaded: true
       });
+
     objs = mathbox.select('transform.surface');
+
  // GUI controls
 	
 	var gui = new dat.GUI();
@@ -194,6 +209,7 @@
 	
 	// do this last so all structures are set up, all parameters defined
 	updateGraphFunc();
+
   </script>
 </body>
 </html>
